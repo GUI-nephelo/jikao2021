@@ -34,8 +34,13 @@ def download(xkid,dc,c=0):
     global Burl
     url= Burl %(xkid)
     print(url)
+    header = {
+        "User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:86.0) Gecko/20100101 Firefox/86.0",
+        "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8"
+        }
+    r = Request(url,headers = header)
     try:
-        r = urlopen(url, timeout=5).read()
+        r = urlopen(r, timeout=5).read()
         open("%s\\%s.JPG" % ("JIKAO"+dc, xkid), "wb").write(r)
         return True
     except HTTPError as e:
@@ -59,8 +64,8 @@ def fix(i,c=4):
 def main(dc):
     mkdir("JIKAO"+dc)
     c=0
-    for i in range(1609,10000):
-        if c>=100:
+    for i in range(1,10000):
+        if c>=200:
             print(dc,"ok")
             return 
         bid = "21"+dc+"10"+fix(str(i))
@@ -75,8 +80,10 @@ if __name__ == "__main__":
     a.remove("110110")
     a.remove("110112")
     print(a)
-    for i in a:
-        main(i)
+    #for i in a:
+    #    main(i)
+    main("110102")
+    
     """
     for i in range(100141,100500):
         ping(i)
