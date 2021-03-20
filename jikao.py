@@ -77,13 +77,14 @@ def main(dc):
 if __name__ == "__main__":
     #open("log.txt","w").close()
     a=["1101"+fix(str(i),c=2) for i in range(6,20)]
-    a.remove("110110")
+    a.remove("110115")
     a.remove("110112")
     print(a)
     #for i in a:
     #    main(i)
-    main("110102")
-    
+    main("110115")
+    main("110118")
+    main("110119")
     """
     for i in range(100141,100500):
         ping(i)
